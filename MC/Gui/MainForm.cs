@@ -49,6 +49,7 @@ namespace Gui
                 Moduel m = new Moduel();
                 m.Load(dlg.SeletedPanlel);
                 m.Hcontrol.Location = MouseLoc;
+                m.Hcontrol.mod = m;
                 cp.AddNewPanel(m.Hcontrol);
                 m.Start();
             }
@@ -81,6 +82,12 @@ namespace Gui
             {
                cp = MControlPanel.Load(dlg.FileName);
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ArduinoCore.Arduino ad = new ArduinoCore.Arduino("COM4");
+            ad.SetPin(13, 1);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using IronPython.Hosting;
+﻿using ArduinoCore;
+using IronPython.Hosting;
 using Microsoft.Scripting;
 using Microsoft.Scripting.Hosting;
 using System;
@@ -27,7 +28,14 @@ namespace CpCore
         private ScriptRuntime pyRuntime = null;
         private ScriptScope pyScope = null;
 
+        public Arduino ard;
 
+        public string ComPort
+        {
+            get { return _ComPort; }
+            set { _ComPort = value; ard = new Arduino(value); }
+        }
+        private string _ComPort = "COM4";
 
         /// <summary>
         /// This is the main interface to the Core implmntaion
@@ -36,7 +44,7 @@ namespace CpCore
         public Luna(Control h)
         {
             Host = h;
-
+            ard = new Arduino(ComPort);
             if (pyEngine == null)
             {
                 pyEngine = Python.CreateEngine();
@@ -247,7 +255,7 @@ namespace CpCore
 
 
             //adding
-            //  pyScope.SetVariable("User", u);
+            pyScope.SetVariable("Arduino", ard);
 
             //add main variables
             pyScope.SetVariable("MainForm", Host);
