@@ -1,9 +1,12 @@
 
-int led = 13;
 int inbyte = 0;
 void setup() {
   // put your setup code here, to run once:
-  pinMode(led, OUTPUT);
+  
+  for(int i = 2; i < 14; i++)
+  {
+    pinMode(i, OUTPUT);
+  }
   Serial.begin(9600);
 }
 
@@ -12,13 +15,15 @@ void loop() {
   if(Serial.available() >0){
      inbyte = Serial.read();
      Serial.write(inbyte);
-      if(inbyte == (13))
+
+      if(inbyte < (14))
       {
-         digitalWrite(led, LOW);        
+         digitalWrite(inbyte, LOW);        
       }
-      if(inbyte == (13 * 2))
+      else
       {
-        digitalWrite(led, HIGH); 
+        digitalWrite(inbyte / 2, HIGH); 
       }
+
   }
 }

@@ -2,6 +2,7 @@
 using IronPython.Hosting;
 using Microsoft.Scripting;
 using Microsoft.Scripting.Hosting;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -15,14 +16,16 @@ using System.Xml;
 
 namespace CpCore
 {
+
     public class Luna
     {
+        [JsonIgnore]
         public Control Host { get; set; }
 
         private WebClient Wc = new WebClient();
-
-        public string MainCode = "";
-        public string MainHtml = "";
+        public Dictionary<string, string> Properties { get; set; }
+        public string MainCode { get; set; }
+        public string MainHtml { get; set; }
 
         private ScriptEngine pyEngine = null;
         private ScriptRuntime pyRuntime = null;
@@ -41,6 +44,20 @@ namespace CpCore
         /// This is the main interface to the Core implmntaion
         /// </summary>
         /// <param name="h">The host cotrol  for the web app</param>
+        /// 
+
+        public Luna()
+        {
+            ard = new Arduino(ComPort);
+            if (pyEngine == null)
+            {
+                pyEngine = Python.CreateEngine();
+                pyScope = pyEngine.CreateScope();
+
+
+            }
+            NameSpaceList.Add("System.Windows.Forms");
+        }
         public Luna(Control h)
         {
             Host = h;
@@ -52,6 +69,7 @@ namespace CpCore
 
 
             }
+            NameSpaceList.Add("System.Windows.Forms");
         }
 
         /// <summary>
@@ -65,8 +83,10 @@ namespace CpCore
             var sh = html;
             MainCode = s;
             MainHtml = sh;
-            NameSpaceList.Add("System.Windows.Forms");
+
         }
+
+
 
         private void CompileSourceAndExecute(String code)
         {
@@ -249,6 +269,9 @@ namespace CpCore
         /// </summary>
         public void InvokeMain()
         {
+            Host.Controls.Clear();
+            pyEngine = Python.CreateEngine();
+            pyScope = pyEngine.CreateScope();
             LoadHTML();
             //add lib
             //varables
@@ -256,7 +279,7 @@ namespace CpCore
 
             //adding
             pyScope.SetVariable("Arduino", ard);
-
+            pyScope.SetVariable("Properties", Properties);
             //add main variables
             pyScope.SetVariable("MainForm", Host);
 

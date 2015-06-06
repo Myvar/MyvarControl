@@ -43,7 +43,7 @@ namespace CpCore
 
     public class TCResize
     {
-        Control controltobeResized;
+        public Control controltobeResized { get; set; }
         static readonly int decoration = 5;
         public static int Decoration
         {
@@ -58,7 +58,7 @@ namespace CpCore
             controltobeResized.Controls.Add(pictureBox1);
             controltobeResized.Controls.Add(pictureBox2);
             controltobeResized.Controls.Add(pictureBox3);
-            theControl.Parent.Controls.Add(label1);
+           // theControl.Parent.Controls.Add(label1);
         }
 
         private System.Windows.Forms.PictureBox pictureBox1 = new PictureBox();
@@ -74,7 +74,7 @@ namespace CpCore
             // 
             this.pictureBox1.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom
                         | System.Windows.Forms.AnchorStyles.Right);
-            //this.pictureBox1.BackColor = System.Drawing.Color.c;
+          //  this.pictureBox1.BackColor = System.Drawing.Color.LightGray;
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.SizeWE;
             this.pictureBox1.Location = new System.Drawing.Point(controltobeResized.GetClientWidth(), 0);
             this.pictureBox1.Name = "pictureBox1";

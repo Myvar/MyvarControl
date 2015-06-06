@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,9 +10,36 @@ using System.Xaml;
 
 namespace CpCore
 {
+    [JsonObject(MemberSerialization.OptIn)]
     public class MControlPanel
     {
-        public Panel Host { get; set; }
+        
+        public Control Host { get; set; }
+
+        [JsonProperty]
+        public List<MControl> MCs = new List<MControl>();
+
+        public void Reload(bool filereload = false)
+        {
+            Host.Controls.Clear();
+            
+            foreach (MControl i in MCs)
+            {
+                Host.Controls.Add(i);
+                new TCResize(i);
+                if(filereload)
+                {
+                    i.mod.Hcontrol = i;
+                    i.mod.Engine.Host = i;
+                }
+                i.mod.Start();
+                DragExtension.Draggable(i, true);
+                
+                //i.Controls.Clear();
+                
+            }
+          
+        }
 
         public MControlPanel()
         {
@@ -19,7 +48,8 @@ namespace CpCore
 
         public void AddNewPanel(MControl p)
         {
-            Host.Controls.Add(p);
+            MCs.Add(p);
+            Reload();
         }
 
         public MControlPanel(Panel col)
@@ -28,13 +58,13 @@ namespace CpCore
         }
 
         public static MControlPanel Load(string file)
-        {
-            return (MControlPanel)XamlServices.Load(file);
+        {            
+            return JsonConvert.DeserializeObject<MControlPanel>(File.ReadAllText(file));
         }
 
-        public static void Save(string File, MControlPanel instance)
+        public static void Save(string file, MControlPanel instance)
         {
-            XamlServices.Save(File, instance);
+            File.WriteAllText(file,JsonConvert.SerializeObject(instance));
         }
     }
 }

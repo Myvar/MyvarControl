@@ -68,6 +68,7 @@ namespace Gui
         private void savePanelToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SaveFileDialog dlg = new SaveFileDialog();
+            dlg.Filter = "Control Panel Files | *.cp";
             if (dlg.ShowDialog() == DialogResult.OK)
             {
                 MControlPanel.Save(dlg.FileName, cp);
@@ -78,9 +79,12 @@ namespace Gui
         private void loadPanelToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog dlg = new OpenFileDialog();
+            dlg.Filter = "Control Panel Files | *.cp";
             if (dlg.ShowDialog() == DialogResult.OK)
             {
-               cp = MControlPanel.Load(dlg.FileName);
+                cp = MControlPanel.Load(dlg.FileName);
+                cp.Host = HostP;
+                cp.Reload(true);
             }
         }
 
@@ -88,6 +92,7 @@ namespace Gui
         {
             ArduinoCore.Arduino ad = new ArduinoCore.Arduino("COM4");
             ad.SetPin(13, 1);
+           
         }
     }
 }

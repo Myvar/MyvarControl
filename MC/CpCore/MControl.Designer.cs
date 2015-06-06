@@ -1,5 +1,7 @@
-﻿namespace CpCore
+﻿using Newtonsoft.Json;
+namespace CpCore
 {
+ 
     partial class MControl
     {
         /// <summary> 
@@ -31,22 +33,31 @@
             this.components = new System.ComponentModel.Container();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.propertiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.propertiesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.propertiesToolStripMenuItem});
+            this.propertiesToolStripMenuItem,
+            this.propertiesToolStripMenuItem1});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(128, 26);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 70);
             // 
             // propertiesToolStripMenuItem
             // 
             this.propertiesToolStripMenuItem.Name = "propertiesToolStripMenuItem";
             this.propertiesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.propertiesToolStripMenuItem.Text = "Properties";
+            this.propertiesToolStripMenuItem.Text = "Arduino";
             this.propertiesToolStripMenuItem.Click += new System.EventHandler(this.propertiesToolStripMenuItem_Click);
+            // 
+            // propertiesToolStripMenuItem1
+            // 
+            this.propertiesToolStripMenuItem1.Name = "propertiesToolStripMenuItem1";
+            this.propertiesToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.propertiesToolStripMenuItem1.Text = "Properties";
+            this.propertiesToolStripMenuItem1.Click += new System.EventHandler(this.propertiesToolStripMenuItem1_Click);
             // 
             // MControl
             // 
@@ -67,6 +78,7 @@
 
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem propertiesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem propertiesToolStripMenuItem1;
 
 
 

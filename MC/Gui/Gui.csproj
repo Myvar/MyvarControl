@@ -73,6 +73,8 @@
     <EmbeddedResource Include="UI\AddDialog.resx">
       <DependentUpon>AddDialog.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="bin\Debug\Panels\Label\main.properties" />
+    <None Include="bin\Debug\Panels\Led\main.properties" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -99,6 +101,12 @@
       <Project>{093ee07a-4af1-43d9-b50d-6f787fdb1604}</Project>
       <Name>RpiCore</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\Panels\Label\main.html" />
+    <Content Include="bin\Debug\Panels\Label\main.py" />
+    <Content Include="bin\Debug\Panels\Led\main.html" />
+    <Content Include="bin\Debug\Panels\Led\main.py" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

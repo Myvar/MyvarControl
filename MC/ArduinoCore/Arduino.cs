@@ -21,7 +21,7 @@ namespace ArduinoCore
             _Port.Open();
             var x = (pin * (value + 1));
             _Port.Write(new byte[] {(byte)x}, 0, 1);
-            Debug.Write(_Port.ReadByte());
+            Debug.WriteLine(_Port.ReadByte());
             _Port.Close();
         }
     }

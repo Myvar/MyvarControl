@@ -8,11 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CpCore.UI;
+using Newtonsoft.Json;
 
 namespace CpCore
 {
+    [JsonObject(MemberSerialization.OptIn)]
     public partial class MControl : UserControl
     {
+        [JsonProperty]
         public Moduel mod { get; set; }
 
         public MControl()
@@ -22,7 +25,7 @@ namespace CpCore
 
         private void MControl_Load(object sender, EventArgs e)
         {
-            DragExtension.Draggable(this, true);
+           
             TCResize ResizebleThis = new TCResize(this);
         }
 
@@ -34,12 +37,26 @@ namespace CpCore
         private void propertiesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             PropDlg dlg = new PropDlg();
-            dlg.Options = new List<string>() { "COM4"};
-            if(dlg.ShowDialog() == DialogResult.OK)
+            dlg.Options = new List<string>() { };
+            for (int i = 0; i < 13; i++)
+            {
+                dlg.Options.Add("COM" + i);
+            }
+            if (dlg.ShowDialog() == DialogResult.OK)
             {
                 mod.Engine.ComPort = dlg.SeletedPanlel;
             }
-           
+
+        }
+
+        private void propertiesToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            PropertiesDialog dlg = new PropertiesDialog();
+            dlg.Properties = mod.Properties;
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                mod.Start();
+            }
         }
     }
 }
