@@ -36,6 +36,8 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.controlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadPanelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.savePanelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.HostContext.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -77,6 +79,9 @@
             // 
             // fileToolStripMenuItem
             // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.loadPanelToolStripMenuItem,
+            this.savePanelToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
@@ -96,6 +101,20 @@
             this.newToolStripMenuItem.Text = "New";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
+            // loadPanelToolStripMenuItem
+            // 
+            this.loadPanelToolStripMenuItem.Name = "loadPanelToolStripMenuItem";
+            this.loadPanelToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.loadPanelToolStripMenuItem.Text = "Load Panel";
+            this.loadPanelToolStripMenuItem.Click += new System.EventHandler(this.loadPanelToolStripMenuItem_Click);
+            // 
+            // savePanelToolStripMenuItem
+            // 
+            this.savePanelToolStripMenuItem.Name = "savePanelToolStripMenuItem";
+            this.savePanelToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.savePanelToolStripMenuItem.Text = "Save Panel";
+            this.savePanelToolStripMenuItem.Click += new System.EventHandler(this.savePanelToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -105,7 +124,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
-            this.Text = "MainForm";
+            this.Text = "Myvar Control";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainForm_MouseMove);
             this.HostContext.ResumeLayout(false);
@@ -125,5 +144,7 @@
         private System.Windows.Forms.ToolStripMenuItem newControlToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem controlToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem loadPanelToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem savePanelToolStripMenuItem;
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xaml;
 
 namespace CpCore
 {
@@ -26,6 +27,14 @@ namespace CpCore
             Host = col;
         }
 
+        public static MControlPanel Load(string file)
+        {
+            return (MControlPanel)XamlServices.Load(file);
+        }
 
+        public static void Save(string File, MControlPanel instance)
+        {
+            XamlServices.Save(File, instance);
+        }
     }
 }

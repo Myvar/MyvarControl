@@ -27,7 +27,7 @@ namespace Gui
         private void MainForm_Load(object sender, EventArgs e)
         {
             DoubleBuffered = true;
-            foreach(var i in Directory.GetDirectories("Panels"))
+            foreach (var i in Directory.GetDirectories("Panels"))
             {
                 Panels.Add(i);
             }
@@ -56,12 +56,31 @@ namespace Gui
 
         private void MainForm_MouseMove(object sender, MouseEventArgs e)
         {
-           
+
         }
 
         private void HostP_MouseMove(object sender, MouseEventArgs e)
         {
             MouseLoc = new Point(e.X, e.Y);
+        }
+
+        private void savePanelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog dlg = new SaveFileDialog();
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                MControlPanel.Save(dlg.FileName, cp);
+
+            }
+        }
+
+        private void loadPanelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dlg = new OpenFileDialog();
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+               cp = MControlPanel.Load(dlg.FileName);
+            }
         }
     }
 }
