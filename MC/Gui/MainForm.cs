@@ -1,9 +1,11 @@
 ﻿using CpCore;
+using Gui.UI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,7 +17,7 @@ namespace Gui
     {
         MControlPanel cp;
         public Point MouseLoc = new Point();
-
+        public List<string> Panels = new List<string>();
 
         public MainForm()
         {
@@ -25,6 +27,11 @@ namespace Gui
         private void MainForm_Load(object sender, EventArgs e)
         {
             DoubleBuffered = true;
+            foreach(var i in Directory.GetDirectories("Panels"))
+            {
+                Panels.Add(i);
+            }
+
             cp = new MControlPanel(HostP);
         }
 
@@ -35,7 +42,16 @@ namespace Gui
 
         private void newControlToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            cp.AddNewPanel(new MControl() { Location = MouseLoc });
+            AddDialog dlg = new AddDialog();
+            dlg.Options = Panels;
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                Moduel m = new Moduel();
+                m.Load(dlg.SeletedPanlel);
+                m.Hcontrol.Location = MouseLoc;
+                cp.AddNewPanel(m.Hcontrol);
+                m.Start();
+            }
         }
 
         private void MainForm_MouseMove(object sender, MouseEventArgs e)

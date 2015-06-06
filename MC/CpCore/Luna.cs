@@ -3,6 +3,7 @@ using Microsoft.Scripting;
 using Microsoft.Scripting.Hosting;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Net;
 using System.Reflection;
@@ -179,7 +180,7 @@ namespace CpCore
 
             return null;
         }
-#endregion
+        #endregion
 
         private void LoadHTML()
         {
@@ -196,30 +197,30 @@ namespace CpCore
                     {
                         var s = (XmlAttribute)d;
                         PropertyInfo prop = b.GetType().GetProperty(s.Name, BindingFlags.Public | BindingFlags.Instance);
-                      
-                            try
+
+                        try
+                        {
+
+                            if (s.Name == "Color")
+                            {
+                                throw new NotImplementedException();
+                            }
+                            prop.SetValue(b, Convert.ChangeType(s.Value, prop.PropertyType), null);
+                        }
+                        catch (Exception e)
+                        {
+                            if (s.Name == "Location")
+                            {
+                                string[] s1 = s.Value.Replace(" ", "").Split(',');
+                                b.Location = new System.Drawing.Point(int.Parse(s1[0]), int.Parse(s1[1]));
+                            }
+                            if (s.Name == "Color")
                             {
 
-                                if (s.Name == "Color")
-                                {
-                                    throw new NotImplementedException();
-                                }
-                                prop.SetValue(b, Convert.ChangeType(s.Value, prop.PropertyType), null);
+                                b.BackColor = Color.FromName(s.Value);
                             }
-                            catch (Exception e)
-                            {
-                                if (s.Name == "Location")
-                                {
-                                    string[] s1 = s.Value.Replace(" ", "").Split(',');
-                                    b.Location = new System.Drawing.Point(int.Parse(s1[0]), int.Parse(s1[1]));
-                                }
-                                if (s.Name == "Color")
-                                {
-                                    
-                                    b.BackColor = Color.FromName(s.Value);
-                                }
-                            }
-                        
+                        }
+
                     }
 
 
@@ -234,7 +235,7 @@ namespace CpCore
         }
 
 
-      
+
         /// <summary>
         /// start Site
         /// </summary>
@@ -243,10 +244,10 @@ namespace CpCore
             LoadHTML();
             //add lib
             //varables
-          
+
 
             //adding
-          //  pyScope.SetVariable("User", u);
+            //  pyScope.SetVariable("User", u);
 
             //add main variables
             pyScope.SetVariable("MainForm", Host);
@@ -257,6 +258,5 @@ namespace CpCore
 
         }
 
-    }
     }
 }

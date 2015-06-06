@@ -74,6 +74,7 @@
       <DependentUpon>MControl.cs</DependentUpon>
     </Compile>
     <Compile Include="MControlPanel.cs" />
+    <Compile Include="Moduel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResizeExtension.cs" />
   </ItemGroup>
