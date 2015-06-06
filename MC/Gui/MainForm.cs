@@ -94,5 +94,29 @@ namespace Gui
             ad.SetPin(13, 1);
            
         }
+
+        private void showBorderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if((sender as ToolStripMenuItem).Checked)
+            {
+                cp.ShowBorders(true);
+            }
+            else
+            {
+                cp.ShowBorders(false);
+            }
+        }
+
+        private void canDragToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if ((sender as ToolStripMenuItem).Checked)
+            {
+                cp.CanDrag(true);
+            }
+            else
+            {
+                cp.CanDrag(false);
+            }
+        }
     }
 }

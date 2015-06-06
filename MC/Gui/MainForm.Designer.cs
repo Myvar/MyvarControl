@@ -34,10 +34,13 @@
             this.newControlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.controlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadPanelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.savePanelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.controlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showBorderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.canDragToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.HostContext.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -70,7 +73,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.controlToolStripMenuItem});
+            this.controlToolStripMenuItem,
+            this.viewToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(701, 24);
@@ -85,6 +89,20 @@
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
+            // 
+            // loadPanelToolStripMenuItem
+            // 
+            this.loadPanelToolStripMenuItem.Name = "loadPanelToolStripMenuItem";
+            this.loadPanelToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.loadPanelToolStripMenuItem.Text = "Load Panel";
+            this.loadPanelToolStripMenuItem.Click += new System.EventHandler(this.loadPanelToolStripMenuItem_Click);
+            // 
+            // savePanelToolStripMenuItem
+            // 
+            this.savePanelToolStripMenuItem.Name = "savePanelToolStripMenuItem";
+            this.savePanelToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.savePanelToolStripMenuItem.Text = "Save Panel";
+            this.savePanelToolStripMenuItem.Click += new System.EventHandler(this.savePanelToolStripMenuItem_Click);
             // 
             // controlToolStripMenuItem
             // 
@@ -101,19 +119,34 @@
             this.newToolStripMenuItem.Text = "New";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
-            // loadPanelToolStripMenuItem
+            // viewToolStripMenuItem
             // 
-            this.loadPanelToolStripMenuItem.Name = "loadPanelToolStripMenuItem";
-            this.loadPanelToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.loadPanelToolStripMenuItem.Text = "Load Panel";
-            this.loadPanelToolStripMenuItem.Click += new System.EventHandler(this.loadPanelToolStripMenuItem_Click);
+            this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.showBorderToolStripMenuItem,
+            this.canDragToolStripMenuItem});
+            this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.viewToolStripMenuItem.Text = "View";
             // 
-            // savePanelToolStripMenuItem
+            // showBorderToolStripMenuItem
             // 
-            this.savePanelToolStripMenuItem.Name = "savePanelToolStripMenuItem";
-            this.savePanelToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.savePanelToolStripMenuItem.Text = "Save Panel";
-            this.savePanelToolStripMenuItem.Click += new System.EventHandler(this.savePanelToolStripMenuItem_Click);
+            this.showBorderToolStripMenuItem.Checked = true;
+            this.showBorderToolStripMenuItem.CheckOnClick = true;
+            this.showBorderToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.showBorderToolStripMenuItem.Name = "showBorderToolStripMenuItem";
+            this.showBorderToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.showBorderToolStripMenuItem.Text = "Show Border";
+            this.showBorderToolStripMenuItem.Click += new System.EventHandler(this.showBorderToolStripMenuItem_Click);
+            // 
+            // canDragToolStripMenuItem
+            // 
+            this.canDragToolStripMenuItem.Checked = true;
+            this.canDragToolStripMenuItem.CheckOnClick = true;
+            this.canDragToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.canDragToolStripMenuItem.Name = "canDragToolStripMenuItem";
+            this.canDragToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.canDragToolStripMenuItem.Text = "Can Drag";
+            this.canDragToolStripMenuItem.Click += new System.EventHandler(this.canDragToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -146,5 +179,8 @@
         private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadPanelToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem savePanelToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showBorderToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem canDragToolStripMenuItem;
     }
 }
