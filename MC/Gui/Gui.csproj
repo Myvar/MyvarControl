@@ -75,6 +75,7 @@
     </EmbeddedResource>
     <None Include="bin\Debug\Panels\Label\main.properties" />
     <None Include="bin\Debug\Panels\Led\main.properties" />
+    <None Include="bin\Debug\Panels\Slider\main.properties" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -107,6 +108,8 @@
     <Content Include="bin\Debug\Panels\Label\main.py" />
     <Content Include="bin\Debug\Panels\Led\main.html" />
     <Content Include="bin\Debug\Panels\Led\main.py" />
+    <Content Include="bin\Debug\Panels\Slider\main.html" />
+    <Content Include="bin\Debug\Panels\Slider\main.py" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

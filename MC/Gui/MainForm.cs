@@ -105,6 +105,7 @@ namespace Gui
             {
                 cp.ShowBorders(false);
             }
+            
         }
 
         private void canDragToolStripMenuItem_Click(object sender, EventArgs e)

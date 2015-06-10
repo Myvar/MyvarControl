@@ -134,7 +134,7 @@
             this.showBorderToolStripMenuItem.CheckOnClick = true;
             this.showBorderToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.showBorderToolStripMenuItem.Name = "showBorderToolStripMenuItem";
-            this.showBorderToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.showBorderToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.showBorderToolStripMenuItem.Text = "Show Border";
             this.showBorderToolStripMenuItem.Click += new System.EventHandler(this.showBorderToolStripMenuItem_Click);
             // 
@@ -144,7 +144,7 @@
             this.canDragToolStripMenuItem.CheckOnClick = true;
             this.canDragToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.canDragToolStripMenuItem.Name = "canDragToolStripMenuItem";
-            this.canDragToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.canDragToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.canDragToolStripMenuItem.Text = "Can Drag";
             this.canDragToolStripMenuItem.Click += new System.EventHandler(this.canDragToolStripMenuItem_Click);
             // 
